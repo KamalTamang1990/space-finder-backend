@@ -1,3 +1,4 @@
+// to initiate multiple dynamo table 
 
 import { Stack } from 'aws-cdk-lib';
 import { AttributeType, Table } from 'aws-cdk-lib/aws-dynamodb';
@@ -10,7 +11,7 @@ export class GenericTable {
     private primaryKey: string;
 
     //Because this GenericTable must be included in a stack 
-    // Reference to a stack
+    // Reference to a stack (private stack and table )
     private stack: Stack;
     private table: Table;
 
