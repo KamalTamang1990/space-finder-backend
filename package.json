@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/KamalTamang1990/space-finder-backend#readme",
   "devDependencies": {
+    "@types/node": "17.0.13",
     "aws-cdk": "^2.10.0",
     "aws-cdk-lib": "^2.10.0",
     "constructs": "^10.0.50",
