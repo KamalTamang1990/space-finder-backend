@@ -4,7 +4,8 @@ import { DynamoDB } from 'aws-sdk';
 import { APIGatewayProxyEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 import { v4 } from 'uuid';
 
-
+// env varialbes
+const TABLE_NAME = process.env.TABLE_NAME
 // this is lambda it is best for us to use the imports from Lambda
 // need some types from aws [npm i @types/aws-lambda]
 // now we will use the lambda with API Gateway
@@ -35,15 +36,16 @@ async function handler(event: APIGatewayProxyEvent, context: Context): Promise<A
         // the action is PutItemInput
         await dbClient.put({
             // Tablename from spacestack
-            TableName: 'SpacesTable',
+            //! means to make sure that it exist 
+            TableName: TABLE_NAME!,
             Item: item
         }).promise()
     } catch (error) {
         result.body = (error as Error).message
     }
 
-    result.body = JSON.stringify(item.spaceId)
-    //result.body = JSON.stringify('Created item with id: ${item.spaceId}')
+    //result.body = JSON.stringify(item.spaceId)
+    result.body = JSON.stringify(`Created item with id: ${item.spaceId}`)
     return result
 }
 export { handler }

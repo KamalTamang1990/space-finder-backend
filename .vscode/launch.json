@@ -1,0 +1,26 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug local file",
+            // Typescript part come into place, the runtime args will take the typescript code  and register it
+            "runtimeArgs": [
+                "-r",
+                "ts-node/register"
+            ],
+            // where we specify our file
+            "args": [
+                "${relativeFile}"
+            ],
+            // this is only coz we are running lambdas and lambdas need to know by default in which region they run
+            "env": {
+                "AWS_REGION": "eu-central-1"
+            }
+        }
+    ]
+}
