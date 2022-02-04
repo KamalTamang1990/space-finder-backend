@@ -1,3 +1,4 @@
+// contains all our logic like API Gateway, Lambda
 import { Stack, StackProps } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import { Code, Function as LambdaFunction, Runtime } from 'aws-cdk-lib/aws-lambda';
@@ -8,7 +9,7 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs'
 import { handler } from '../services/node-lambda/hello';
 import { PolicyStatement } from 'aws-cdk-lib/aws-iam';
 
-export class spacestack extends Stack{
+export class spacestack extends Stack{ //stack
     // statical initiliazor. will allow su to reference this API wherever we want in this class
     private api = new RestApi(this, 'SpaceApi')
 
