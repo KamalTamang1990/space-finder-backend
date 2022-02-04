@@ -55,7 +55,7 @@ export class spacestack extends Stack{
 
         // Policy statement to list s3 buckets
         const s3ListPolicy = new PolicyStatement();
-        // actions that can listall the buckets
+        // actions that can list all the buckets
         s3ListPolicy.addActions('s3:ListAllMyBuckets');
         s3ListPolicy.addResources('*')
         // attatching the policy to helloLambdaNodejs to list the s3 buckets 

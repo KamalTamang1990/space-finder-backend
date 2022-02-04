@@ -1,3 +1,4 @@
+// contains the logic for launching the project
 import { spacestack } from './spacestack';
 import { App } from 'aws-cdk-lib';
 
