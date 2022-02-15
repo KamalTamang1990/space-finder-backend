@@ -5,6 +5,13 @@
 GET {{endpoint}}/hello/
 ###
 
+//
+GET {{endpoint}}/spaces?spaceId=jkljlkjl
+###
+
+//
+GET {{endpoint}}/spaces?location= Nepal
+###
 POST {{endpoint}}/spaces/
 Content-Type: : application/json
 

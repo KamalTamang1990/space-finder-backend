@@ -16,8 +16,9 @@ export interface TableProps {
     createLambdaPath?: string,
     readLambdaPath?: string,
     updateLambdaPath?: string,
-    deleteLambdaPaht?: string
-    
+    deleteLambdaPaht?: string,
+    // optional field for query on secondary indexes
+    secondaryIndexes?: string
 
 }
 
@@ -56,12 +57,14 @@ export class GenericTable {
     // initializor method
     private initialize(){
         this.createTable();
+        this.SecondaryIndexes(); 
         this.createLambdas();
         this.grantTableRight();
     }
     // creating a table
     private createTable(){
         this.table= new Table(this.stack,this.pros.tableName,{
+            // to do a dynamodb query based on partition key
             partitionKey:{
                 name: this.pros.primaryKey,
                 type: AttributeType.STRING
@@ -69,6 +72,20 @@ export class GenericTable {
             // providing a table name 
             tableName: this.pros.tableName
         })
+    }
+    // for Query on secondary indexes
+    private SecondaryIndexes(){
+        if(this.pros.secondaryIndexes){
+            for (const secondaryIndex of this.pros.secondaryIndexes){
+                this.table.addGlobalSecondaryIndex({
+                    indexName: secondaryIndex,
+                    partitionKey: {
+                        name: secondaryIndex,
+                        type: AttributeType.STRING
+                    }
+                })
+            }
+        }
     }
     
     //

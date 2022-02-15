@@ -20,7 +20,8 @@
             // this is only coz we are running lambdas and lambdas need to know by default in which region they run
             "env": {
                 "AWS_REGION": "eu-central-1",
-                "TABLE_NAME":   "SpacesTable"
+                "TABLE_NAME":  "SpacesTable",
+                "PRIMARY_KEY":  "spaceId"
             }
         }
     ]
